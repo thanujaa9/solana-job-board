@@ -80,9 +80,4 @@ To run this project locally, you will need:
       ```
     - The frontend should now be running on `http://localhost:5173`.
 
-### **Important: Add a `.gitignore` file**
 
-To ensure you never accidentally upload your `.env` file, create a file named `.gitignore` in the **root directory** of your project (the same folder as this README file) and add the following content:
-
-```gitignore
-.env

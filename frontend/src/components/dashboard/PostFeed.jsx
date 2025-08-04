@@ -14,11 +14,12 @@ const PostFeed = ({ token }) => {
     setLoading(true);
     setError(null);
     try {
-const response = await fetch(`${import.meta.env.VITE_API_URL}/api/posts`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/posts`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-         
+          // Corrected: Added the token header
+          'x-auth-token': token,
         },
       });
 
@@ -41,7 +42,7 @@ const response = await fetch(`${import.meta.env.VITE_API_URL}/api/posts`, {
 
   useEffect(() => {
     fetchPosts();
-  }, []);
+  }, [token]);
 
   const handleCreatePostClick = () => {
     navigate('/dashboard/create-post');
@@ -55,8 +56,9 @@ const response = await fetch(`${import.meta.env.VITE_API_URL}/api/posts`, {
     }
 
     try {
-const endpoint = isLiked ? `${import.meta.env.VITE_API_URL}/api/posts/unlike/${postId}` : `${import.meta.meta.env.VITE_API_URL}/api/posts/like/${postId}`;
-        const method = 'PUT';
+      // Corrected: Fixed the typo (meta.meta)
+      const endpoint = isLiked ? `${import.meta.env.VITE_API_URL}/api/posts/unlike/${postId}` : `${import.meta.env.VITE_API_URL}/api/posts/like/${postId}`;
+      const method = 'PUT';
 
       const response = await fetch(endpoint, {
         method: method,
@@ -97,7 +99,8 @@ const endpoint = isLiked ? `${import.meta.env.VITE_API_URL}/api/posts/unlike/${p
     }
 
     try {
-const response = await fetch(`${import.meta.env.VITE_API_URL}/api/posts/comment/${postId}`, {
+      // Corrected: Replaced hardcoded URL with environment variable
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/posts/comment/${postId}`, {
         method: 'POST',
         headers: {
           'x-auth-token': token,
@@ -130,7 +133,8 @@ const response = await fetch(`${import.meta.env.VITE_API_URL}/api/posts/comment/
     }
 
     try {
-const response = await fetch(`${import.meta.env.VITE_API_URL}/api/posts/comment/${postId}/${commentId}`, {
+      // Corrected: Replaced hardcoded URL with environment variable
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/posts/comment/${postId}/${commentId}`, {
         method: 'DELETE',
         headers: {
           'x-auth-token': token,

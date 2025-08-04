@@ -27,7 +27,7 @@ const JobApplicantsPage = ({ token }) => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`http://localhost:8000/api/jobs/${jobId}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/jobs/${jobId}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -50,7 +50,7 @@ const JobApplicantsPage = ({ token }) => {
 
   const fetchMatchScore = async (jobId, userId) => {
     try {
-const response = await fetch(`${import.meta.env.VITE_API_URL}/api/jobs/match/${jobId}/${userId}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/jobs/match/${jobId}/${userId}`, {
         method: 'GET',
         headers: {
           'x-auth-token': token,
@@ -71,7 +71,7 @@ const response = await fetch(`${import.meta.env.VITE_API_URL}/api/jobs/match/${j
   const handleStatusChange = async (applicationId, newStatus) => {
     setStatusLoading(prev => ({ ...prev, [applicationId]: true }));
     try {
-const response = await fetch(`${import.meta.env.VITE_API_URL}/api/jobs/application/${applicationId}/status`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/jobs/application/${applicationId}/status`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
