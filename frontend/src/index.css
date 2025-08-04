@@ -1,0 +1,6 @@
+/* In your frontend/src/index.css or frontend/src/App.css */
+@import '@solana/wallet-adapter-react-ui/styles.css'; /* <-- MOVED TO TOP */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
