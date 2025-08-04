@@ -12,7 +12,8 @@ const MyApplications = ({ token }) => {
       setLoading(true);
       setError(null);
       try {
-        const response = await fetch('http://localhost:8000/api/applications/my-applications', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/applications/my-applications`, {
+
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
