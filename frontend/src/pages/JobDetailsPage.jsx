@@ -25,7 +25,7 @@ function JobDetailsPage({ token }) {
             headers['x-auth-token'] = token;
         }
 
-        const response = await fetch(`http://localhost:8000/api/jobs/${id}`, {
+const response = await fetch(`${import.meta.env.VITE_API_URL}/api/jobs/${id}`, {
             headers,
         });
         const data = await response.json();
@@ -34,7 +34,6 @@ function JobDetailsPage({ token }) {
           throw new Error(data.msg || 'Failed to fetch job details');
         }
         
-        // FIX: The backend now returns { "job": {...} }, so we need to access the job key
         setJob(data.job);
       } catch (err) {
         console.error('Fetch Job Details Error:', err.message);
@@ -61,7 +60,7 @@ function JobDetailsPage({ token }) {
     }
 
     try {
-      const response = await fetch('http://localhost:8000/api/applications', {
+const response = await fetch(`${import.meta.env.VITE_API_URL}/api/applications`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

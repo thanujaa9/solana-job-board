@@ -13,7 +13,7 @@ const PostedJobsAndApplicants = ({ token }) => {
       setLoading(true);
       setError(null);
       try {
-        const response = await fetch('http://localhost:8000/api/jobs/my-posted-jobs', {
+const response = await fetch(`${import.meta.env.VITE_API_URL}/api/jobs/my-posted-jobs`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

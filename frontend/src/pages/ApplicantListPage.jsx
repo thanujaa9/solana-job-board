@@ -17,14 +17,14 @@ const ApplicantListPage = ({ token }) => {
     setMessage(null);
     try {
      
-      const jobResponse = await fetch(`http://localhost:8000/api/jobs/${jobId}`);
+const jobResponse = await fetch(`${import.meta.env.VITE_API_URL}/api/jobs/${jobId}`);
       const jobData = await jobResponse.json();
       if (!jobResponse.ok) {
         throw new Error(jobData.msg || 'Failed to fetch job title');
       }
       setJobTitle(jobData.title || 'Job');
 
-      const response = await fetch(`http://localhost:8000/api/applications/job/${jobId}`, {
+const response = await fetch(`${import.meta.env.VITE_API_URL}/api/applications/job/${jobId}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ const ApplicantListPage = ({ token }) => {
   const handleStatusUpdate = async (applicationId, newStatus) => {
     setMessage(null); 
     try {
-      const response = await fetch(`http://localhost:8000/api/applications/${applicationId}/status`, {
+const response = await fetch(`${import.meta.env.VITE_API_URL}/api/applications/${applicationId}/status`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

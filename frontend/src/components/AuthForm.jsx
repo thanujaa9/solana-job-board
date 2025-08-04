@@ -29,8 +29,8 @@ function AuthForm({ onAuthSuccess, isLogin }) {
       return;
     }
 
-    const endpoint = isLogin ? 'http://localhost:8000/api/auth/login' : 'http://localhost:8000/api/auth/register';
-    const body = isLogin ? { email, password } : { name, email, password };
+const endpoint = isLogin ? `${import.meta.env.VITE_API_URL}/api/auth/login` : `${import.meta.env.VITE_API_URL}/api/auth/register`;
+      const body = isLogin ? { email, password } : { name, email, password };
 
     try {
       const response = await fetch(endpoint, {

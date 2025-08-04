@@ -78,7 +78,7 @@ const PostNewJob = () => {
       setPaymentError('Wallet public key not available. Please reconnect.');
       return;
     }
-    if (ADMIN_WALLET_ADDRESS === "Your_Phantom_Wallet_Address_Here") {
+    if (ADMIN_WALLET_ADDRESS === import.meta.env.VITE_ADMIN_WALLET_ADDRESS) {
       setPaymentError('ADMIN_WALLET_ADDRESS is not configured. Please set it in PostNewJob.jsx');
       return;
     }
@@ -144,14 +144,12 @@ const PostNewJob = () => {
     setFormError(null);
     setSuccessMessage(null);
 
-    // FIX: Add validation for budget to prevent negative values
     if (budget && parseFloat(budget) < 0) {
       setFormError('Project budget cannot be a negative number.');
       setSubmitting(false);
       return;
     }
     
-    // FIX: Add validation for min salary to prevent negative values
     if (salaryMin && parseFloat(salaryMin) < 0) {
       setFormError('Minimum salary cannot be a negative number.');
       setSubmitting(false);
@@ -197,7 +195,7 @@ const PostNewJob = () => {
       };
 
       const res = await axios.post(
-        'http://localhost:8000/api/jobs',
+        `${import.meta.env.VITE_API_URL}/api/jobs`,
         jobData,
         config
       );

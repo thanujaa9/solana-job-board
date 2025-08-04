@@ -50,7 +50,7 @@ const JobApplicantsPage = ({ token }) => {
 
   const fetchMatchScore = async (jobId, userId) => {
     try {
-      const response = await fetch(`http://localhost:8000/api/jobs/match/${jobId}/${userId}`, {
+const response = await fetch(`${import.meta.env.VITE_API_URL}/api/jobs/match/${jobId}/${userId}`, {
         method: 'GET',
         headers: {
           'x-auth-token': token,
@@ -71,7 +71,7 @@ const JobApplicantsPage = ({ token }) => {
   const handleStatusChange = async (applicationId, newStatus) => {
     setStatusLoading(prev => ({ ...prev, [applicationId]: true }));
     try {
-      const response = await fetch(`http://localhost:8000/api/jobs/application/${applicationId}/status`, {
+const response = await fetch(`${import.meta.env.VITE_API_URL}/api/jobs/application/${applicationId}/status`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

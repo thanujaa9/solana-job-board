@@ -22,14 +22,12 @@ function Register({ onGoBack, onRegisterSuccess }) {
     }
 
     try {
-      const response = await fetch('http://localhost:8000/api/auth/register', {
+const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        // --- INCLUDE name IN THE BODY ---
         body: JSON.stringify({ name, email, password }),
-        // --- END INCLUDE name IN THE BODY ---
       });
 
       const data = await response.json();

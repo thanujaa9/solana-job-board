@@ -66,7 +66,7 @@ function ProfileForm({ token, onProfileUpdated, initialProfileData, onCancelEdit
     setExtractedSkills([]);
 
     try {
-        const response = await fetch('http://localhost:8000/api/profile/extract-skills', {
+const response = await fetch(`${import.meta.env.VITE_API_URL}/api/profile/extract-skills`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -105,8 +105,7 @@ function ProfileForm({ token, onProfileUpdated, initialProfileData, onCancelEdit
     };
 
     const method = initialProfileData ? 'PUT' : 'POST'; 
-    const url = initialProfileData ? 'http://localhost:8000/api/profile' : 'http://localhost:8000/api/profile'; 
-
+const url = initialProfileData ? `${import.meta.env.VITE_API_URL}/api/profile` : `${import.meta.env.VITE_API_URL}/api/profile`;
     try {
       const response = await fetch(url, {
         method: method,

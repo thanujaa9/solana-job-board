@@ -34,7 +34,7 @@ function Dashboard({ token, onLogout }) {
     setProfileLoading(true);
     setProfileError('');
     try {
-      const response = await fetch('http://localhost:8000/api/profile/me', {
+const response = await fetch(`${import.meta.env.VITE_API_URL}/api/profile/me`, {
         headers: {
           'x-auth-token': token,
         },

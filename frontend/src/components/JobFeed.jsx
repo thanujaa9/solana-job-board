@@ -37,8 +37,7 @@ function JobFeed({ token, onViewJobDetails }) {
       queryParams.append('page', currentPage);
       queryParams.append('limit', jobsPerPage);
 
-      const url = `http://localhost:8000/api/jobs?${queryParams.toString()}`;
-
+      const url = `${import.meta.env.VITE_API_URL}/api/jobs?${queryParams.toString()}`; 
       const response = await fetch(url, {
         method: 'GET',
         headers: {
