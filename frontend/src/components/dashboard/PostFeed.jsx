@@ -14,7 +14,7 @@ const PostFeed = ({ token }) => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch('http://localhost:8000/api/posts', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/posts`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -55,8 +55,7 @@ const PostFeed = ({ token }) => {
     }
 
     try {
-      const endpoint = isLiked ? `http://localhost:8000/api/posts/unlike/${postId}` : `http://localhost:8000/api/posts/like/${postId}`;
-      const method = 'PUT';
+const endpoint = isLiked ? `${import.meta.env.VITE_API_URL}/api/posts/unlike/${postId}` : `${import.meta.env.VITE_API_URL}/api/posts/like/${postId}`;      const method = 'PUT';
 
       const response = await fetch(endpoint, {
         method: method,
@@ -97,7 +96,7 @@ const PostFeed = ({ token }) => {
     }
 
     try {
-      const response = await fetch(`http://localhost:8000/api/posts/comment/${postId}`, {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/posts/comment/${postId}`, {
         method: 'POST',
         headers: {
           'x-auth-token': token,
@@ -130,7 +129,7 @@ const PostFeed = ({ token }) => {
     }
 
     try {
-      const response = await fetch(`http://localhost:8000/api/posts/comment/${postId}/${commentId}`, {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/posts/comment/${postId}/${commentId}`, {
         method: 'DELETE',
         headers: {
           'x-auth-token': token,
